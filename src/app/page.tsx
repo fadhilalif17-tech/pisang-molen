@@ -132,6 +132,28 @@ Terima kasih 🙏
     }
   };
 
+  const handleMessageWhatsApp = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const pesan = `
+*PESAN DARI WEBSITE PISANG MOLEN*
+
+Nama   : ${messageForm.name}
+Email  : ${messageForm.email}
+Subjek : ${messageForm.subject}
+
+Pesan:
+${messageForm.message}
+
+Terima kasih 🙏
+  `.trim();
+
+    window.open(
+      `https://wa.me/62811669126?text=${encodeURIComponent(pesan)}`,
+      '_blank'
+    );
+  };
+
   return (
     <div className="min-h-screen bg-linear-to-br from-yellow-50 to-orange-50">
       {/* Header */}
@@ -439,7 +461,7 @@ Terima kasih 🙏
                   <CardTitle>Kirim Pesan</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <form onSubmit={handleMessage} className="space-y-4">
+                  <form onSubmit={handleMessageWhatsApp} className="space-y-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Nama *
